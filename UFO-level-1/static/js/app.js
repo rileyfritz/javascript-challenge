@@ -9,16 +9,16 @@ function buildTable(data) {
     var tbody = table.select("tbody");
     var trow;
     for (var i = 0; i < tableLength; i++) {
-      trow = tbody.append("tr");
-      trow.append("td").text(data[i].datetime);
-      trow.append("td").text(data[i].city);
-      trow.append("td").text(data[i].state);
-      trow.append("td").text(data[i].country);
-      trow.append("td").text(data[i].shape);
-      trow.append("td").text(data[i].durationMinutes);
-      trow.append("td").text(data[i].comments);
+        trow = tbody.append("tr");
+        trow.append("td").text(data[i].datetime);
+        trow.append("td").text(data[i].city);
+        trow.append("td").text(data[i].state);
+        trow.append("td").text(data[i].country);
+        trow.append("td").text(data[i].shape);
+        trow.append("td").text(data[i].durationMinutes);
+        trow.append("td").text(data[i].comments);
     }
-  }
+}
 
 // call function with our json data
 buildTable(tableData);
@@ -38,15 +38,28 @@ function filterTable() {
     // Assign the value of the date form to variable
     var input = dateForm.property("value");
 
-    var table = d3.select("#ufo-table");
-    var tbody = table.select("tbody");   
-    var rows = tbody.selectAll("tr");
+    // var table = d3.select("#ufo-table");
+    // var tbody = table.select("tbody");   
+    // var rows = tbody.selectAll("tr");
 
-    console.log(rows);
+    // console.log(rows);
 
-    for (var i = 0; i < tableLength; i++) {
-        var date = rows._groups[i].cells[0];
-        console.log(date);
+    // var input = document.getElementById("#datetime");
+    var table = document.getElementById("ufo-table");
+    var tr = table.getElementsByTagName("tr");
 
+    for (i = 1; i < tr.length; i++) {
+
+        console.log(tr[i]);
+        console.log(input);
+        var td = tr[i].getElementsByTagName("td")[0].innerText;
+        console.log(td);
+        if (td == input) {
+            tr[i].style.display = "";
+        }
+
+        else {
+            tr[i].style.display = "None";
+        }
     }
 }
