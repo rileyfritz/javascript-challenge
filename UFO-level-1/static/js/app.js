@@ -25,11 +25,12 @@ buildTable(tableData);
 
 // Listen for events changes i.e. button clicked
 d3.select("#filter-btn").on("click", filterTable);
+d3.select("#filter-btn").on("click", filterTable);
 
 // This function is called when a dropdown menu item is selected
 function filterTable() {
 
-    // prevent page from refreshing if user presses enter
+    
     d3.event.preventDefault();
 
     // Use D3 to select the date form
@@ -55,6 +56,10 @@ function filterTable() {
         var td = tr[i].getElementsByTagName("td")[0].innerText;
         console.log(td);
         if (td == input) {
+            tr[i].style.display = "";
+        }
+
+        else if (input === "") {
             tr[i].style.display = "";
         }
 
