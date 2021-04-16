@@ -38,7 +38,16 @@ function filterTable() {
     var dateInput = dateForm.property("value");
     var cityForm = d3.select("#city");
     var cityInput = cityForm.property("value");
-    console.log(cityInput);
+    
+    var stateForm = d3.select("#state");
+    var stateInput = stateForm.property("value");
+    
+    var countryForm = d3.select("#country");
+    var countryInput = countryForm.property("value");
+    
+    var shapeForm = d3.select("#shape");
+    var shapeInput = shapeForm.property("value");
+
 
     // var input = document.getElementById("#datetime");
     var table = document.getElementById("ufo-table");
@@ -49,9 +58,11 @@ function filterTable() {
         console.log(tr[i]);
         var tdDate = tr[i].getElementsByTagName("td")[0].innerText;
         var tdCity = tr[i].getElementsByTagName("td")[1].innerText;
-        console.log(tdCity);
-
-        if ((tdDate == dateInput || dateInput == "") && (tdCity == cityInput || cityInput == "")) {
+        var tdState = tr[i].getElementsByTagName("td")[2].innerText;
+        var tdCountry = tr[i].getElementsByTagName("td")[3].innerText;
+        var tdShape = tr[i].getElementsByTagName("td")[4].innerText;
+               
+        if ((tdDate == dateInput || dateInput == "") && (tdCity == cityInput || cityInput == "") && (tdState == stateInput || stateInput == "") && (tdCountry == countryInput || countryInput == "") && (tdShape == shapeInput || shapeInput == "")) {
             tr[i].style.display = "";
         }
 
