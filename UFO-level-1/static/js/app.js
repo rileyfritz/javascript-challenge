@@ -25,7 +25,7 @@ buildTable(tableData);
 
 // Listen for events changes i.e. button clicked
 d3.select("#filter-btn").on("click", filterTable);
-d3.select("#filter-btn").on("click", filterTable);
+d3.select("#filter-btn").on("submit", filterTable);
 
 // This function is called when a dropdown menu item is selected
 function filterTable() {
@@ -33,17 +33,12 @@ function filterTable() {
     
     d3.event.preventDefault();
 
-    // Use D3 to select the date form
+    // Use D3 to select the forms
     var dateForm = d3.select("#datetime");
-
-    // Assign the value of the date form to variable
-    var input = dateForm.property("value");
-
-    // var table = d3.select("#ufo-table");
-    // var tbody = table.select("tbody");   
-    // var rows = tbody.selectAll("tr");
-
-    // console.log(rows);
+    var dateInput = dateForm.property("value");
+    var cityForm = d3.select("#city");
+    var cityInput = cityForm.property("value");
+    console.log(cityInput);
 
     // var input = document.getElementById("#datetime");
     var table = document.getElementById("ufo-table");
@@ -52,14 +47,11 @@ function filterTable() {
     for (i = 1; i < tr.length; i++) {
 
         console.log(tr[i]);
-        console.log(input);
-        var td = tr[i].getElementsByTagName("td")[0].innerText;
-        console.log(td);
-        if (td == input) {
-            tr[i].style.display = "";
-        }
+        var tdDate = tr[i].getElementsByTagName("td")[0].innerText;
+        var tdCity = tr[i].getElementsByTagName("td")[1].innerText;
+        console.log(tdCity);
 
-        else if (input === "") {
+        if ((tdDate == dateInput || dateInput == "") && (tdCity == cityInput || cityInput == "")) {
             tr[i].style.display = "";
         }
 
